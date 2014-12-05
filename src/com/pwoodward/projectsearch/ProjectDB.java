@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 
 public class ProjectDB
 {
-    final static ResourceBundle rb = ResourceBundle.getBundle("version");
+    final static ResourceBundle rb = ResourceBundle.getBundle("com.pwoodward.projectsearch.version");
 
     /**
      * @param args the command line arguments
@@ -20,7 +20,7 @@ public class ProjectDB
     public static void main(String[] args)
     {
         int buildNumber;
-        buildNumber = Integer.parseInt(getRbTok("BUILD"));
+        buildNumber = Integer.parseInt(getRbToken("BUILD"));
         
         // INIT MAIN APPLICATION WINDOW
         frmMain mainApp = new frmMain(buildNumber);
@@ -29,7 +29,7 @@ public class ProjectDB
 
     // Incrementing a Build Number:
     // http://forums.netbeans.org/ptopic6692.html
-    public static String getRbTok(String propToken)
+    public static String getRbToken(String propToken)
     {
         String msg;
         msg = rb.getString(propToken);

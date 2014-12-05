@@ -136,7 +136,8 @@ public class frmMain extends javax.swing.JFrame
             try
             {
                 desktop.open(folderPath);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 JOptionPane.showMessageDialog(this, "Unable to Open Folder " + folder, "Error", JOptionPane.ERROR_MESSAGE);
                 System.out.println(ex);
@@ -474,9 +475,6 @@ public class frmMain extends javax.swing.JFrame
             return;
         }
 
-        // RETREIVE FOLDER NAME FROM FOLDER LIST
-        String folder = this.lstFolders.getSelectedValue().toString();
-
         // ATTEMPT TO OPEN DIRECTORY
         openDirectory(selectedDir.fullPath());
 
@@ -487,7 +485,14 @@ public class frmMain extends javax.swing.JFrame
 
     private void addToRecentFolderList(Directory folder)
     {
-        this.recentlyOpened.addElement(folder);
+        // CHECK IF ALREADY EXISTS
+        if (this.recentlyOpened.contains(folder) == true)
+        {
+            this.recentlyOpened.removeElement(folder);
+        }
+
+        this.recentlyOpened.add(0, folder);
+
     }
 
     private void mnuFile_ExitActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_mnuFile_ExitActionPerformed
@@ -510,8 +515,8 @@ public class frmMain extends javax.swing.JFrame
         {
             // GET TYPE OF SELECTED ITEM FROM LISTVIEW
             System.out.println("Test");
-            Directory selectedDir = (Directory)this.lstRecent.getSelectedValue();
-            
+            Directory selectedDir = (Directory) this.lstRecent.getSelectedValue();
+
             // ATTEMPT TO OPEN DIRECTORY
             openDirectory(selectedDir.fullPath());
 
