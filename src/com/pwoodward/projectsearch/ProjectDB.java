@@ -53,13 +53,15 @@ public class ProjectDB
 
     private static void logUsage()
     {
+        String windowsUsername = System.getProperty("user.name");
+        String url = "http://pwoodward.com/metrics/project-search.php?log&user=" + windowsUsername;
         try
         {
-            URL myURL = new URL("http://pwoodward.com/metrics/project-search.php?log");
+            URL myURL = new URL(url);
             URLConnection myURLConnection = myURL.openConnection();
             myURLConnection.connect();
             String content = myURLConnection.getContent().toString();
-            System.out.println("Usage Logged");
+            System.out.println("Usage Logged - " + url);
         }
         catch (MalformedURLException e)
         {
