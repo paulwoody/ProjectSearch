@@ -221,7 +221,11 @@ public class frmMain extends javax.swing.JFrame
         mnuFile = new javax.swing.JMenu();
         mnuFile_BasePath = new javax.swing.JMenuItem();
         mnuFile_RefreshFolders = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         mnuFile_Exit = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Project Search © 2014 Paul Woodward");
@@ -362,6 +366,7 @@ public class frmMain extends javax.swing.JFrame
             }
         });
         mnuFile.add(mnuFile_RefreshFolders);
+        mnuFile.add(jSeparator1);
 
         mnuFile_Exit.setText("Exit");
         mnuFile_Exit.addActionListener(new java.awt.event.ActionListener()
@@ -374,6 +379,17 @@ public class frmMain extends javax.swing.JFrame
         mnuFile.add(mnuFile_Exit);
 
         jMenuBar.add(mnuFile);
+
+        jMenu1.setText("Help");
+
+        jMenuItem1.setText("paulwoody@yahoo.com");
+        jMenuItem1.setActionCommand("");
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("07843 231916");
+        jMenu1.add(jMenuItem2);
+
+        jMenuBar.add(jMenu1);
 
         setJMenuBar(jMenuBar);
 
@@ -590,8 +606,12 @@ public class frmMain extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnResetSearch;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JLabel lblAppBuildCaption;
     private javax.swing.JLabel lblAppBuildNumber;
     private javax.swing.JLabel lblUsername;

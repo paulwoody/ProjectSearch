@@ -8,10 +8,15 @@ package com.pwoodward.projectsearch;
  *
  * @author Paul Woodward
  */
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ResourceBundle;
 
 public class ProjectDB
 {
+
     final static ResourceBundle rb = ResourceBundle.getBundle("com.pwoodward.projectsearch.version");
 
     /**
@@ -19,8 +24,17 @@ public class ProjectDB
      */
     public static void main(String[] args)
     {
-        int buildNumber;
-        buildNumber = Integer.parseInt(getRbToken("BUILD"));
+        int buildNumber = Integer.parseInt(getRbToken("BUILD"));
+        String jarPath = ProjectDB.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+
+        // OUTPUT JAR LOCATION TO CONSOLE
+        System.out.println("JAR Location: " + jarPath);
+
+        // OUTPUT USERS PROFILE LOCATION SO WE CAN STORE SO USER PREFERENCES
+        System.out.println(System.getProperty("user.home"));
+        
+        // ATTEMPT TO CALL HOME FOR USAGE METRICS
+        logUsage();
         
         // INIT MAIN APPLICATION WINDOW
         frmMain mainApp = new frmMain(buildNumber);
@@ -35,5 +49,25 @@ public class ProjectDB
         msg = rb.getString(propToken);
 
         return msg;
+    }
+
+    private static void logUsage()
+    {
+        try
+        {
+            URL myURL = new URL("http://pwoodward.com/metrics/project-search.php?log");
+            URLConnection myURLConnection = myURL.openConnection();
+            myURLConnection.connect();
+            String content = myURLConnection.getContent().toString();
+            System.out.println("Usage Logged");
+        }
+        catch (MalformedURLException e)
+        {
+            System.out.println("Unable to Log Usage Metrics - Malformed URL");
+        }
+        catch (IOException e)
+        {
+            System.out.println("Unable to Log Usage Metrics - Unknown Error");
+        }
     }
 }
