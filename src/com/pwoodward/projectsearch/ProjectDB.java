@@ -33,12 +33,12 @@ public class ProjectDB
         // OUTPUT USERS PROFILE LOCATION SO WE CAN STORE SO USER PREFERENCES
         System.out.println(System.getProperty("user.home"));
         
-        // ATTEMPT TO CALL HOME FOR USAGE METRICS
-        logUsage();
-        
         // INIT MAIN APPLICATION WINDOW
         frmMain mainApp = new frmMain(buildNumber);
         mainApp.setVisible(true);
+        
+        // ATTEMPT TO CALL HOME FOR USAGE METRICS
+        logUsage();
     }
 
     // Incrementing a Build Number:
