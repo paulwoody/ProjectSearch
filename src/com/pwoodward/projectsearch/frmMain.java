@@ -52,7 +52,7 @@ public class frmMain extends javax.swing.JFrame
         currentDirectory = new DefaultListModel();
 
         // Set Title
-        this.setTitle("Project Search");
+        this.setTitle("CJR Project Search");
 
         // LOAD DIRECTORY LISTING
         basePath = "P:\\";
